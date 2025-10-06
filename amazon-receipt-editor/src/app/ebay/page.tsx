@@ -1,24 +1,79 @@
 "use client";
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
 const EbayReceipt = () => {
   const receiptRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleDownloadPdf = () => {
+  const handleDownloadPdf = async () => {
     const input = receiptRef.current;
-    if (input) {
-      html2canvas(input, { scale: 2 }).then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('ebay-receipt.pdf');
+    if (!input) return;
+    setLoading(true);
+
+    // 🧩 Clonamos el elemento y limpiamos colores no soportados
+    const clone = input.cloneNode(true) as HTMLElement;
+    sanitizeUnsupportedColors(clone);
+
+    // Temporalmente ocultamos el original y añadimos el clon al DOM
+    input.style.display = "none";
+    document.body.appendChild(clone);
+
+    try {
+      const canvas = await html2canvas(clone, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+        logging: false,
       });
+
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save("ebay-receipt.pdf");
+    } catch (error) {
+      console.error("Error generando PDF:", error);
+    } finally {
+      input.style.display = "";
+      clone.remove();
+      setLoading(false);
     }
   };
+
+  /**
+   * 🔧 Limpia cualquier color CSS con funciones no soportadas: lab(), oklch(), lch(), var().
+   * Los reemplaza por colores seguros (#000, #fff, #ccc).
+   */
+  const sanitizeUnsupportedColors = (element: HTMLElement) => {
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_ELEMENT);
+
+    while (walker.nextNode()) {
+      const el = walker.currentNode as HTMLElement;
+      const style = window.getComputedStyle(el);
+
+      const props = ["color", "backgroundColor", "borderColor"];
+      for (const prop of props) {
+        const val = style[prop as keyof CSSStyleDeclaration] as string;
+        if (
+          typeof val === "string" &&
+          (val.includes("lab(") ||
+            val.includes("lch(") ||
+            val.includes("oklch(") ||
+            val.includes("var("))
+        ) {
+          // Reemplazamos según el tipo
+          if (prop === "color") el.style.color = "#000";
+          else if (prop === "backgroundColor") el.style.backgroundColor = "#fff";
+          else el.style.borderColor = "#000";
+        }
+      }
+    }
+  };
+
 
   return (
     <div>
