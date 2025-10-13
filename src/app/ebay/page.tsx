@@ -216,9 +216,9 @@ const EbayReceipt = () => {
             <div>
             <h2 className="font-bold text-lg mb-2">Shipping address</h2>
             <div className="text-sm">
-                <p contentEditable suppressContentEditableWarning>Patricio Pazmino</p>
-                <p contentEditable suppressContentEditableWarning>2826 NW 72nd Ave, # SERV45096</p>
-                <p contentEditable suppressContentEditableWarning>miami, Florida 33122-1310</p>
+                <p contentEditable suppressContentEditableWarning>JUAN PEREZ</p>
+                <p contentEditable suppressContentEditableWarning>12345 NW 67 AVE</p>
+                <p contentEditable suppressContentEditableWarning>Miami, FL 33177</p>
                 <p contentEditable suppressContentEditableWarning>United States</p>
             </div>
             </div>

@@ -163,9 +163,9 @@ const AmazonReceipt = () => {
           {/* ... Shipping Address ... */}
           <div>
             <h3 className="font-bold">Shipping Address:</h3>
-            <p contentEditable suppressContentEditableWarning className="text-sm">EDISON PAREDES</p>
-            <p contentEditable suppressContentEditableWarning className="text-sm">11047 NW 84TH ST</p>
-            <p contentEditable suppressContentEditableWarning className="text-sm">DORAL, FL 33178-5264</p>
+            <p contentEditable suppressContentEditableWarning className="text-sm">JUAN PEREZ</p>
+            <p contentEditable suppressContentEditableWarning className="text-sm">12345 NW 67 AVE</p>
+            <p contentEditable suppressContentEditableWarning className="text-sm">Miami, FL 33177</p>
             <p contentEditable suppressContentEditableWarning className="text-sm">United States</p>
 
             <h3 className="font-bold mt-4">Shipping Speed:</h3>
@@ -191,9 +191,9 @@ const AmazonReceipt = () => {
                   <h3 className="font-bold">Payment Method:</h3>
                   <p contentEditable suppressContentEditableWarning className="text-sm">American Express | Last digits: 1006</p>
                   <h3 className="font-bold mt-2">Billing address</h3>
-                  <p contentEditable suppressContentEditableWarning className="text-sm">EDISON PAREDES</p>
-                  <p contentEditable suppressContentEditableWarning className="text-sm">11047 NW 84TH ST</p>
-                  <p contentEditable suppressContentEditableWarning className="text-sm">DORAL, FL 33178-5264</p>
+                  <p contentEditable suppressContentEditableWarning className="text-sm">JUAN PEREZ</p>
+                  <p contentEditable suppressContentEditableWarning className="text-sm">12345 NW 67 AVE</p>
+                  <p contentEditable suppressContentEditableWarning className="text-sm">Miami, FL 33177</p>
                   <p contentEditable suppressContentEditableWarning className="text-sm">United States</p>
               </div>
               <div className="text-right">
