@@ -12,11 +12,8 @@ export default function DashboardPage() {
           <Link href="/ebay" className="px-6 py-3 text-lg font-semibold text-white bg-gray-700 rounded-lg hover:bg-gray-800 transition-colors">
             eBay Receipt
           </Link>
-          <Link href="/target" className="px-6 py-3 text-lg font-semibold text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors">
-            Target Receipt
-          </Link>
-          <Link href="/walmart" className="px-6 py-3 text-lg font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors">
-            Walmart Receipt
+          <Link href="/apple" className="px-6 py-3 text-lg font-semibold text-white bg-black rounded-lg hover:bg-gray-800 transition-colors">
+            Apple Store Receipt
           </Link>
         </div>
       </div>
