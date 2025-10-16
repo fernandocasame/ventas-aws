@@ -75,21 +75,18 @@ const AmazonReceipt = () => {
   };
 
   const handleDownloadPdf = () => {
-    const input = receiptRef.current;
-    if (input) {
-      html2canvas(input, { scale: 2 }).then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('amazon-receipt.pdf');
-      });
-    }
+    window.print();
   };
 
   return (
     <div>
+      <style jsx>{`
+        @media print {
+          .no-print {
+            display: none !important;
+          }
+        }
+      `}</style>
       <div ref={receiptRef} className="bg-white p-8 max-w-4xl mx-auto font-sans">
         {/* ... Header and other static sections ... */}
         <div className="text-center mb-4">
@@ -154,7 +151,7 @@ const AmazonReceipt = () => {
               </button>
             </div>
           ))}
-          <button onClick={handleAddItem} className="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm">
+          <button onClick={handleAddItem} className="mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded text-sm no-print">
             Add Item
           </button>
         </div>
@@ -221,7 +218,7 @@ const AmazonReceipt = () => {
         </div>
       </div>
       <div className="text-center mt-4 mb-8">
-        <button onClick={handleDownloadPdf} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button onClick={handleDownloadPdf} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded no-print">
           Download as PDF
         </button>
       </div>

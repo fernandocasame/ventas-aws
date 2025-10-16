@@ -169,34 +169,19 @@ const EbayReceipt = () => {
    * Los reemplaza por colores seguros (#000, #fff, #ccc).
    */
   const sanitizeUnsupportedColors = (element: HTMLElement) => {
-    const walker = document.createTreeWalker(element, NodeFilter.SHOW_ELEMENT);
-
-    while (walker.nextNode()) {
-      const el = walker.currentNode as HTMLElement;
-      const style = window.getComputedStyle(el);
-
-      const props = ["color", "backgroundColor", "borderColor"];
-      for (const prop of props) {
-        const val = style[prop as keyof CSSStyleDeclaration] as string;
-        if (
-          typeof val === "string" &&
-          (val.includes("lab(") ||
-            val.includes("lch(") ||
-            val.includes("oklch(") ||
-            val.includes("var("))
-        ) {
-          // Reemplazamos según el tipo
-          if (prop === "color") el.style.color = "#000";
-          else if (prop === "backgroundColor") el.style.backgroundColor = "#fff";
-          else el.style.borderColor = "#000";
-        }
-      }
-    }
+    window.print();
   };
 
 
   return (
     <div>
+      <style jsx>{`
+        @media print {
+          .no-print {
+            display: none !important;
+          }
+        }
+      `}</style>
       <div ref={receiptRef} className="bg-white p-8 max-w-4xl mx-auto font-sans text-gray-800">
         <header className="flex justify-between items-center mb-10">
           <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" alt="eBay Logo" className="w-24" />
@@ -259,7 +244,7 @@ const EbayReceipt = () => {
                   ))}
                 </tbody>
               </table>
-              <button onClick={() => handleAddItem(group.id)} className="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs">Add Item</button>
+              <button onClick={() => handleAddItem(group.id)} className="mt-2 bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs no-print">Add Item</button>
               <button onClick={() => handleRemoveGroup(group.id)} className="absolute top-2 right-2 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm opacity-0 group-hover:opacity-100 transition-opacity">X</button>
             </div>
           ))}
@@ -267,7 +252,7 @@ const EbayReceipt = () => {
         </div>
       </div>
       <div className="text-center my-8">
-        <button onClick={handleDownloadPdf} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button onClick={handleDownloadPdf} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded no-print">
           Download as PDF
         </button>
       </div>
