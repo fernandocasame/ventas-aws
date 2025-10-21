@@ -2,6 +2,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import Image from 'next/image';
 
 interface Item {
   id: number;
@@ -132,7 +133,7 @@ const ShopSimonReceipt = () => {
                     <p className="text-xs text-gray-500 mt-2">TRACK</p>
                     </div>
                     <div className="w-3/4 flex items-start space-x-4">
-                    <img src={item.imageUrl} alt={item.name} className="w-20 h-20 object-cover" />
+                    <Image src={item.imageUrl} alt={item.name} width={80} height={80} className="w-20 h-20 object-cover" />
                     <div className="flex-grow">
                         <p contentEditable suppressContentEditableWarning onBlur={(e) => handleItemChange(item.id, 'name', e.currentTarget.innerText)} className="font-bold">{item.name}</p>
                         <p contentEditable suppressContentEditableWarning onBlur={(e) => handleItemChange(item.id, 'details', e.currentTarget.innerText)}>{item.details}</p>

@@ -1,7 +1,8 @@
 "use client";
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import Image from 'next/image';
 
 interface Item {
   id: number;
@@ -93,7 +94,7 @@ const AmazonReceipt = () => {
       <div ref={receiptRef} className="bg-white p-8 max-w-4xl mx-auto font-sans">
         {/* ... Header and other static sections ... */}
         <div className="text-center mb-4">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" className="w-32 mx-auto" />
+          <Image src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" width={128} height={40} className="w-32 mx-auto" />
         </div>
 
         <div className="text-center my-6">

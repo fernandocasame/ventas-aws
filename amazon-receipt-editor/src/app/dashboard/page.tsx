@@ -15,6 +15,9 @@ export default function DashboardPage() {
           <Link href="/shopsimon" className="px-6 py-3 text-lg font-semibold text-white bg-red-600 rounded-lg hover:bg-red-700 transition-colors">
             Shop Simon Receipt
           </Link>
+          <Link href="/evanfischer" className="px-6 py-3 text-lg font-semibold text-white bg-green-600 rounded-lg hover:bg-green-700 transition-colors">
+            Evan Fischer Invoice
+          </Link>
         </div>
       </div>
     </main>

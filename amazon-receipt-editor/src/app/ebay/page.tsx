@@ -2,6 +2,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import Image from 'next/image';
 
 interface Item {
   id: number;
@@ -145,7 +146,7 @@ const EbayReceipt = () => {
     <div>
       <div ref={receiptRef} className="bg-white p-8 max-w-4xl mx-auto font-sans text-gray-800">
         <header className="flex justify-between items-center mb-10">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" alt="eBay Logo" className="w-24" />
+          <Image src="https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg" alt="eBay Logo" width={96} height={40} className="w-24" />
         </header>
 
         <section className="grid grid-cols-3 gap-8 mb-8">
