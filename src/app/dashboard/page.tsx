@@ -30,6 +30,9 @@ export default function DashboardPage() {
           <Link href="/evanfischer" className="px-6 py-3 text-lg font-semibold text-white bg-green-600 rounded-lg hover:bg-green-700 transition-colors">
             Evan Fischer Invoice
           </Link>
+          <Link href="/shein" className="px-6 py-3 text-lg font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors">
+            Shein Invoice
+          </Link>
         </div>
       </div>
     </main>
