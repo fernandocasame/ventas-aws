@@ -27,6 +27,9 @@ export default function DashboardPage() {
           <Link href="/rockauto" className="px-6 py-3 text-lg font-semibold text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors">
             RockAuto Receipt
           </Link>
+          <Link href="/rki-instruments" className="px-6 py-3 text-lg font-semibold text-white bg-blue-800 rounded-lg hover:bg-blue-900 transition-colors">
+            RKI Instruments Invoice
+          </Link>
         </div>
       </div>
     </main>
