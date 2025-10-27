@@ -21,6 +21,9 @@ export default function DashboardPage() {
           <Link href="/shein" className="px-6 py-3 text-lg font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors">
             Shein Invoice
           </Link>
+          <Link href="/temu" className="px-6 py-3 text-lg font-semibold text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors">
+            Temu Receipt
+          </Link>
         </div>
       </div>
     </main>
