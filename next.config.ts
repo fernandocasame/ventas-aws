@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: "standalone",
   images: {
-    domains: ['i.ibb.co','www.facebook.com'], // dominios permitidos
+    domains: ['i.ibb.co','www.facebook.com','upload.wikimedia.org','img.kwcdn.com','via.placeholder.com','www.rockauto.com'], // dominios permitidos
   },
 };
 

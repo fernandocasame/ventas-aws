@@ -27,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <a href="/dashboard" className=" absolute bg-blue-400 rounded-3xl w-[10vh] text-center py-[0.5rem]  m-[2rem] text-white font-bold no-print">Regresar</a>
         {children}
       </body>
     </html>

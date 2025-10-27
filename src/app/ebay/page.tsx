@@ -248,11 +248,11 @@ const EbayReceipt = () => {
               <button onClick={() => handleRemoveGroup(group.id)} className="absolute top-2 right-2 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm opacity-0 group-hover:opacity-100 transition-opacity">X</button>
             </div>
           ))}
-          <button onClick={handleAddGroup} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Seller Section</button>
+          <button onClick={handleAddGroup} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded no-print">Add Seller Section</button>
         </div>
       </div>
       <div className="text-center my-8">
-        <button onClick={handleDownloadPdf} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded no-print">
+        <button onClick={handleDownloadPdf} className="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded no-print">
           Download as PDF
         </button>
       </div>
