@@ -24,6 +24,9 @@ export default function DashboardPage() {
           <Link href="/temu" className="px-6 py-3 text-lg font-semibold text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors">
             Temu Receipt
           </Link>
+          <Link href="/rockauto" className="px-6 py-3 text-lg font-semibold text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors">
+            RockAuto Receipt
+          </Link>
         </div>
       </div>
     </main>
