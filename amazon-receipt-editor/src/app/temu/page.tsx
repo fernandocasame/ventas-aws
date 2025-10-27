@@ -30,8 +30,17 @@ const TemuReceipt = () => {
     return subtotal - discount + shipping + tax;
   }, [subtotal, discount, shipping, tax]);
 
-  const handleItemChange = (id: number, field: keyof Item, value: string | number) => {
-    setItems(items.map(item => item.id === id ? { ...item, [field]: value } : item));
+  const handleItemChange = (id: number, field: keyof Item, value: string | number | File) => {
+    if (field === 'imageUrl' && typeof value === 'object') {
+      const file = value as File;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setItems(items.map(item => item.id === id ? { ...item, imageUrl: e.target?.result as string } : item));
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setItems(items.map(item => item.id === id ? { ...item, [field]: value } : item));
+    }
   };
 
   const handleAddItem = () => {
@@ -115,7 +124,10 @@ const TemuReceipt = () => {
                 <div className="space-y-4">
                     {items.map(item => (
                         <div key={item.id} className="flex items-start space-x-4 relative group">
-                            <Image src={item.imageUrl} alt={item.name} width={100} height={100} className="w-24 h-24 object-cover" />
+                            <div className="w-24 h-24 relative">
+                                <Image src={item.imageUrl} alt={item.name} width={100} height={100} className="w-24 h-24 object-cover" />
+                                <input type="file" accept="image/*" onChange={(e) => e.target.files && handleItemChange(item.id, 'imageUrl', e.target.files[0])} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                            </div>
                             <div className="flex-grow">
                                 <p contentEditable suppressContentEditableWarning onBlur={(e) => handleItemChange(item.id, 'name', e.currentTarget.innerText)} className="text-sm">{item.name}</p>
                             </div>
